@@ -58,7 +58,24 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  function findKey (e) {
+    let keyCode = e.keyCode;
+    return document.querySelectorAll(`[data-key="${keyCode}"]`)
+  }
 
+  function addClass (e) {
+    var dram = findKey(e);
+    dram[0].classList.add('playing');
+    dram[1].currentTime = 0;
+    dram[1].play();
+  }
+
+  function removeClass (e) {
+    findKey(e)[0].classList.remove('playing');
+  }
+
+  document.addEventListener('keydown', addClass);
+  document.addEventListener('keyup', removeClass);
 </script>
 
 
